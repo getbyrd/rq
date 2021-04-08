@@ -24,7 +24,10 @@ except ImportError:  # noqa  # pragma: no cover
 
 # Serialize pickle dumps using the highest pickle protocol (binary, default
 # uses ascii)
-dumps = partial(pickle.dumps, protocol=pickle.HIGHEST_PROTOCOL)
+
+# We always use protocol v2 for compatability with python2
+dumps = partial(pickle.dumps, protocol=2)
+
 loads = pickle.loads
 
 JobStatus = enum(
